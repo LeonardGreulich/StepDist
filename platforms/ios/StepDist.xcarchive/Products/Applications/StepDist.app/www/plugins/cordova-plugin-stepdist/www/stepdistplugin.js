@@ -2,10 +2,13 @@ cordova.define("cordova-plugin-stepdist.stepdistplugin", function(require, expor
 var cordova = require('cordova');
 var exec = require('cordova/exec');
 
+var distanceFilter = 0;
+var accuracyFilter = 8;
+
 var Stepdistplugin = function() {
     this.channels = {
         distancetraveled: cordova.addDocumentEventHandler("distancetraveled"),
-        readytostart: cordova.addDocumentEventHandler("readytostart"),
+        isreadytostart: cordova.addDocumentEventHandler("isreadytostart"),
         lastcalibration: cordova.addDocumentEventHandler("lastcalibration")
     }
 
@@ -43,7 +46,11 @@ var onResume = function() {
 
 var startLocalization = function() {
     console.log("Start localization");
-    exec(pluginInfoEvent, error, "stepdistplugin", "startLocalization", [])
+    var options = {
+        distanceFilter: distanceFilter,
+        accuracyFilter: accuracyFilter
+      };
+    exec(pluginInfoEvent, error, "stepdistplugin", "startLocalization", [options])
 }
 
 var stopLocalization = function() {
@@ -60,7 +67,7 @@ var error = function() {
 }
 
 var pluginInfoEvent = function(pluginInfoEvent) {
-    console.log(pluginInfoEvent);
+    cordova.fireDocumentEvent("isreadytostart", [pluginInfoEvent.isReadyToStart]);
 }
 
 var onDistanceTraveled = function(distanceTraveledEvent) {

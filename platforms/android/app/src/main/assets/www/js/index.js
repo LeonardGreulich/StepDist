@@ -27,20 +27,41 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
-        this.receivedEvent('deviceready');
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
+        var parentElement = document.getElementById('deviceready');
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
-    }
+        var onIsReadyToStart = function(isReadyToStartEvent) {
+            if (isReadyToStartEvent[0]) {
+                document.getElementById("ready-to-start").setAttribute("status", "on");
+            } else {
+                document.getElementById("ready-to-start").setAttribute("status", "off");
+            }
+        }
+
+        document.addEventListener("isreadytostart", onIsReadyToStart, false);
+
+        var distanceTraveledListening = false;
+
+        var onDistanceTraveled = function(distanceTraveledEvent) {
+            console.log(distanceTraveledEvent);
+        }
+
+        document.getElementById("toggle-measuring-distance-button").onclick = function() {
+            if (!distanceTraveledListening) {
+                document.addEventListener("distancetraveled", onDistanceTraveled, false);
+                document.getElementById("toggle-measuring-distance-button").innerHTML = "Stop"
+                distanceTraveledListening = true;
+            } else {
+                document.removeEventListener("distancetraveled", onDistanceTraveled, false);
+                document.getElementById("toggle-measuring-distance-button").innerHTML = "Start"
+                distanceTraveledListening = false;
+            }
+        }
+    },
 };
 
 app.initialize();

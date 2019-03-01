@@ -34,11 +34,15 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        var onReadyToStart = function(readyToStartEvent) {
-            console.log(readyToStartEvent);
+        var onIsReadyToStart = function(isReadyToStartEvent) {
+            if (isReadyToStartEvent[0]) {
+                document.getElementById("ready-to-start").setAttribute("status", "on");
+            } else {
+                document.getElementById("ready-to-start").setAttribute("status", "off");
+            }
         }
 
-        document.addEventListener("readytostart", onReadyToStart, false);
+        document.addEventListener("isreadytostart", onIsReadyToStart, false);
 
         var distanceTraveledListening = false;
 

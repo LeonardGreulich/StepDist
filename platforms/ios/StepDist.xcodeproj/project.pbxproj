@@ -13,7 +13,7 @@
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
-		9411D957AE144B698D386AD9 /* stepdistplugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73686F7F7EE4CD3BC43F770 /* stepdistplugin.swift */; };
+		7234D6BC167A4F9091564A69 /* stepdistplugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073ED2F595DF41F6B60DC5BD /* stepdistplugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = StepDist/config.xml; sourceTree = "<group>"; };
-		D73686F7F7EE4CD3BC43F770 /* stepdistplugin.swift */ = {isa = PBXFileReference; name = "stepdistplugin.swift"; path = "cordova-plugin-stepdist/stepdistplugin.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		073ED2F595DF41F6B60DC5BD /* stepdistplugin.swift */ = {isa = PBXFileReference; name = "stepdistplugin.swift"; path = "cordova-plugin-stepdist/stepdistplugin.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				D73686F7F7EE4CD3BC43F770 /* stepdistplugin.swift */,
+				073ED2F595DF41F6B60DC5BD /* stepdistplugin.swift */,
 			);
 			name = Plugins;
 			path = StepDist/Plugins;
@@ -299,7 +299,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				9411D957AE144B698D386AD9 /* stepdistplugin.swift in Sources */,
+				7234D6BC167A4F9091564A69 /* stepdistplugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
