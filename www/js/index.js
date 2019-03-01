@@ -34,19 +34,25 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
+        var onReadyToStart = function(readyToStartEvent) {
+            console.log(readyToStartEvent);
+        }
+
+        document.addEventListener("readytostart", onReadyToStart, false);
+
         var distanceTraveledListening = false;
 
-        var onTraveledDistance = function(distanceEvent) {
-            console.log(distanceEvent);
+        var onDistanceTraveled = function(distanceTraveledEvent) {
+            console.log(distanceTraveledEvent);
         }
 
         document.getElementById("toggle-measuring-distance-button").onclick = function() {
             if (!distanceTraveledListening) {
-                document.addEventListener("distancetraveled", onTraveledDistance, false);
+                document.addEventListener("distancetraveled", onDistanceTraveled, false);
                 document.getElementById("toggle-measuring-distance-button").innerHTML = "Stop"
                 distanceTraveledListening = true;
             } else {
-                document.removeEventListener("distancetraveled", onTraveledDistance, false);
+                document.removeEventListener("distancetraveled", onDistanceTraveled, false);
                 document.getElementById("toggle-measuring-distance-button").innerHTML = "Start"
                 distanceTraveledListening = false;
             }
