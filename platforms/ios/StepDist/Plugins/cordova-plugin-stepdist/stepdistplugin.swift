@@ -1,8 +1,10 @@
 import CoreLocation
+import CoreMotion
 
 @objc(stepdistplugin) class stepdistplugin : CDVPlugin, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager!
+    var pedometer: CMPedometer!
     var pluginInfoEventCallbackId: String!
     var distanceEventCallbackId: String!
     var distanceFilter: Int!
@@ -24,6 +26,10 @@ import CoreLocation
     
         if locationManager == nil {
             locationManager = CLLocationManager()
+        }
+        
+        if pedometer == nil {
+            pedometer = CMPedometer()
         }
         
         locationManager.delegate = self
@@ -62,6 +68,12 @@ import CoreLocation
     @objc(startMeasuringDistance:) func startMeasuringDistance(command: CDVInvokedUrlCommand) {     
         distanceEventCallbackId = command.callbackId
         
+        pedometer.startUpdates(from: Date(), withHandler: { (data, error) in
+            if let pedometerData = data {
+                
+            }
+        })
+        
         let pluginResult = CDVPluginResult(
             status: CDVCommandStatus_OK,
             messageAs: "Distance measuring started"
@@ -76,6 +88,8 @@ import CoreLocation
 
     @objc(stopMeasuringDistance:) func stopMeasuringDistance(command: CDVInvokedUrlCommand) {     
         distanceEventCallbackId = nil
+        
+        pedometer.stopUpdates()
         
         let pluginResult = CDVPluginResult(
             status: CDVCommandStatus_OK,

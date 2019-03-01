@@ -1,5 +1,6 @@
-**/res
-**/plugins
-**/platforms
-**/node_modules
-**/hooks
+.DS_Store
+res/
+plugins/
+platforms/
+node_modules/
+hooks/
