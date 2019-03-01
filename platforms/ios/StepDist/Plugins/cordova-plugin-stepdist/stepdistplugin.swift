@@ -5,10 +5,16 @@ import CoreMotion
     
     var locationManager: CLLocationManager!
     var pedometer: CMPedometer!
+    
+    var stepEvents: [CMPedometerData]!
+    var locationEvents: [CLLocation]!
+    
     var pluginInfoEventCallbackId: String!
     var distanceEventCallbackId: String!
-    var distanceFilter: Int!
-    var accuracyFilter: Int!
+    var distanceFilter: Double!
+    var accuracyFilter: Double!
+    var distanceTraveled: Int!
+    var stepsTaken: Int!
     
     @objc(startLocalization:) func startLocalization(command: CDVInvokedUrlCommand) {
         pluginInfoEventCallbackId = command.callbackId
@@ -17,7 +23,7 @@ import CoreMotion
             return
         }
         
-        if let distanceFilter = arguments["distanceFilter"] as? Int, let accuracyFilter = arguments["accuracyFilter"] as? Int {
+        if let distanceFilter = arguments["distanceFilter"] as? Double, let accuracyFilter = arguments["accuracyFilter"] as? Double {
             self.distanceFilter = distanceFilter
             self.accuracyFilter = accuracyFilter
         } else {
@@ -34,14 +40,14 @@ import CoreMotion
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = Double(distanceFilter)
+        locationManager.distanceFilter = distanceFilter
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
         let pluginResult = CDVPluginResult(
             status: CDVCommandStatus_OK,
-            messageAs: createPluginInfo(9999.0)
+            messageAs: createPluginInfo(accuracy: 9999.0)
         )
         pluginResult?.setKeepCallbackAs(true)
         
@@ -68,9 +74,16 @@ import CoreMotion
     @objc(startMeasuringDistance:) func startMeasuringDistance(command: CDVInvokedUrlCommand) {     
         distanceEventCallbackId = command.callbackId
         
+        stepEvents = []
+        locationEvents = []
+        
+        distanceTraveled = 0
+        stepsTaken = 0
+        
         pedometer.startUpdates(from: Date(), withHandler: { (data, error) in
-            if let pedometerData = data {
-                
+            if let pedometerData: CMPedometerData = data {
+                self.stepEvents.append(pedometerData)
+                self.stepsTaken = pedometerData.numberOfSteps.intValue
             }
         })
         
@@ -103,10 +116,12 @@ import CoreMotion
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Location accuracy: \(locations.last?.horizontalAccuracy ?? 9999.0)")
-
+        guard let locationEvent = locations.last else {
+            return
+        }
+        
         if pluginInfoEventCallbackId != nil {
-            let pluginInfo = createPluginInfo(locations.last!.horizontalAccuracy)
+            let pluginInfo = createPluginInfo(accuracy: locationEvent.horizontalAccuracy)
             
             let pluginResult = CDVPluginResult(
                 status: CDVCommandStatus_OK,
@@ -121,9 +136,11 @@ import CoreMotion
         }
         
         if distanceEventCallbackId != nil {
+            processLocationEvent(locationEvent: locationEvent)
+            
             let pluginResult = CDVPluginResult(
                 status: CDVCommandStatus_OK,
-                messageAs: "New Distance Event"
+                messageAs: ["distanceTraveled": distanceTraveled, "stepsTaken": stepsTaken]
             )
             pluginResult?.setKeepCallbackAs(true)
             
@@ -134,15 +151,39 @@ import CoreMotion
         }
     }
     
-    func createPluginInfo(_ accuracy: Double) -> [String : Any] {
+    func createPluginInfo(accuracy: Double) -> [String : Any] {
         var isReadyToStart = false;
         
-        if (accuracy <= Double(accuracyFilter) + 0.01) {
+        if accuracy <= accuracyFilter {
             isReadyToStart = true;
         }
         
         let pluginInfo: [String : Any] = ["isReadyToStart": isReadyToStart, "lastCalibrated": "Placeholder", "stepLength": "Placeholder"]
         return pluginInfo
+    }
+    
+    func processLocationEvent(locationEvent: CLLocation) {
+        if locationEvent.horizontalAccuracy <= accuracyFilter {
+            locationEvents.append(locationEvent)
+        }
+        
+        if locationEvents.count > 1 {
+            distanceTraveled = calculateCumulativeDistance()
+        }
+    }
+    
+    func calculateCumulativeDistance() -> Int {
+        var lastLocationEvent: CLLocation!
+        var cumulativeDistance: Double = 0.0
+        
+        for locationEvent: CLLocation in locationEvents {
+            if lastLocationEvent != nil {
+                cumulativeDistance += locationEvent.distance(from: lastLocationEvent)
+            }
+            lastLocationEvent = locationEvent
+        }
+        
+        return Int(cumulativeDistance)
     }
     
 }

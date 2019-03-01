@@ -48,6 +48,8 @@ var app = {
 
         var onDistanceTraveled = function(distanceTraveledEvent) {
             console.log(distanceTraveledEvent);
+            document.getElementById("distance-traveled-paragraph").innerHTML = "Distance: " + distanceTraveledEvent[0]["distanceTraveled"]
+            document.getElementById("steps-taken-paragraph").innerHTML = "Steps: " + distanceTraveledEvent[0]["stepsTaken"]
         }
 
         document.getElementById("toggle-measuring-distance-button").onclick = function() {
