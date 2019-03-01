@@ -53,13 +53,21 @@ var app = {
         document.getElementById("toggle-measuring-distance-button").onclick = function() {
             if (!distanceTraveledListening) {
                 document.addEventListener("distancetraveled", onDistanceTraveled, false);
-                document.getElementById("toggle-measuring-distance-button").innerHTML = "Stop"
+                document.getElementById("toggle-measuring-distance-button").innerHTML = "Stop";
                 distanceTraveledListening = true;
             } else {
                 document.removeEventListener("distancetraveled", onDistanceTraveled, false);
-                document.getElementById("toggle-measuring-distance-button").innerHTML = "Start"
+                document.getElementById("toggle-measuring-distance-button").innerHTML = "Start";
                 distanceTraveledListening = false;
             }
+        }
+
+        var intervalID = window.setInterval(myCallback, 200);
+        var i = 0;
+
+        function myCallback() {
+            i++;
+            document.getElementById("toggle-measuring-distance-button").innerHTML = i;
         }
     },
 };
