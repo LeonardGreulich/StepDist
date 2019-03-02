@@ -44,10 +44,21 @@ var app = {
 
         document.addEventListener("isreadytostart", onIsReadyToStart, false);
 
+        var onLastCalibration = function(lastCalibrationEvent) {
+            if (lastCalibrationEvent[0]) {
+                document.getElementById("currently-calibrating").innerHTML = "Currently calibrating!"
+            } else {
+                document.getElementById("currently-calibrating").innerHTML = "Currently not calibrating!"
+            }
+            document.getElementById("last-calibrated").innerHTML = "Last calibrated: " + lastCalibrationEvent[1]
+            document.getElementById("step-length").innerHTML = "Step length: " + lastCalibrationEvent[2]
+        }
+
+        document.addEventListener("lastcalibration", onLastCalibration, false);
+
         var distanceTraveledListening = false;
 
         var onDistanceTraveled = function(distanceTraveledEvent) {
-            console.log(distanceTraveledEvent);
             document.getElementById("distance-traveled-paragraph").innerHTML = "Distance: " + distanceTraveledEvent[0]["distanceTraveled"]
             document.getElementById("steps-taken-paragraph").innerHTML = "Steps: " + distanceTraveledEvent[0]["stepsTaken"]
         }

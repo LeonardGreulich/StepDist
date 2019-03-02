@@ -115,8 +115,8 @@ h1 {
 }
 
 .status-light {
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     bottom: 0px;
     background-color: red;
     border-radius: 50%;
@@ -126,7 +126,7 @@ h1 {
   }
 
 [status="on"] {
-    background-color: green;
+    background-color: yellowgreen;
 }
 
 [status="off"] {
