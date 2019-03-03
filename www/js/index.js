@@ -45,10 +45,10 @@ var app = {
         document.addEventListener("isreadytostart", onIsReadyToStart, false);
 
         var onLastCalibration = function(lastCalibrationEvent) {
-            if (lastCalibrationEvent["isCalibrating"]) {
-                document.getElementById("currently-calibrating").innerHTML = "Currently calibrating"
+            if (!lastCalibrationEvent["debugInfo"] == "") {
+                document.getElementById("debug-info").innerHTML = lastCalibrationEvent["debugInfo"]
             } else {
-                document.getElementById("currently-calibrating").innerHTML = "Currently not calibrating"
+                document.getElementById("debug-info").innerHTML = ""
             }
             document.getElementById("last-calibrated").innerHTML = "Last calibrated: " + lastCalibrationEvent["lastCalibrated"]
             document.getElementById("step-length").innerHTML = "Step length: " + lastCalibrationEvent["stepLength"]
