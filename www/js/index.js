@@ -35,7 +35,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         var onIsReadyToStart = function(isReadyToStartEvent) {
-            if (isReadyToStartEvent[0]) {
+            if (isReadyToStartEvent["isReadyToStart"]) {
                 document.getElementById("ready-to-start").setAttribute("status", "on");
             } else {
                 document.getElementById("ready-to-start").setAttribute("status", "off");
@@ -45,13 +45,13 @@ var app = {
         document.addEventListener("isreadytostart", onIsReadyToStart, false);
 
         var onLastCalibration = function(lastCalibrationEvent) {
-            if (lastCalibrationEvent[0]) {
-                document.getElementById("currently-calibrating").innerHTML = "Currently calibrating!"
+            if (lastCalibrationEvent["isCalibrating"]) {
+                document.getElementById("currently-calibrating").innerHTML = "Currently calibrating"
             } else {
-                document.getElementById("currently-calibrating").innerHTML = "Currently not calibrating!"
+                document.getElementById("currently-calibrating").innerHTML = "Currently not calibrating"
             }
-            document.getElementById("last-calibrated").innerHTML = "Last calibrated: " + lastCalibrationEvent[1]
-            document.getElementById("step-length").innerHTML = "Step length: " + lastCalibrationEvent[2]
+            document.getElementById("last-calibrated").innerHTML = "Last calibrated: " + lastCalibrationEvent["lastCalibrated"]
+            document.getElementById("step-length").innerHTML = "Step length: " + lastCalibrationEvent["stepLength"]
         }
 
         document.addEventListener("lastcalibration", onLastCalibration, false);
