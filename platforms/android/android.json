@@ -13,7 +13,25 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"stepdistplugin\"><param name=\"android-package\" value=\"cordova-plugin-stepdist.stepdistplugin\" /></feature>",
+              "xml": "<feature name=\"stepdistplugin\"><param name=\"android-package\" value=\"cordova.plugin.stepdist.stepdistplugin\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "AndroidManifest.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.FOREGROUND_SERVICE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-feature android:name=\"android.hardware.location.gps\" />",
               "count": 1
             }
           ]

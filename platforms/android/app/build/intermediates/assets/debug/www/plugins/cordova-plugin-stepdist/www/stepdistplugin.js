@@ -2,8 +2,11 @@ cordova.define("cordova-plugin-stepdist.stepdistplugin", function(require, expor
 var cordova = require('cordova');
 var exec = require('cordova/exec');
 
-var distanceFilter = 0;
-var accuracyFilter = 8;
+var distanceFilter = 2;
+var accuracyFilter = 10;
+var perpendicularDistanceFilter = 0.00002;
+var locationsSequenceFilter = 10;
+var locationsSequenceDistanceFilter = 20;
 
 var Stepdistplugin = function() {
     this.channels = {
@@ -46,10 +49,15 @@ var onResume = function() {
 
 var startLocalization = function() {
     console.log("Start localization");
+
     var options = {
         distanceFilter: distanceFilter,
-        accuracyFilter: accuracyFilter
+        accuracyFilter: accuracyFilter,
+        perpendicularDistanceFilter: perpendicularDistanceFilter,
+        locationsSequenceFilter: locationsSequenceFilter,
+        locationsSequenceDistanceFilter: locationsSequenceDistanceFilter
       };
+      
     exec(pluginInfoEvent, error, "stepdistplugin", "startLocalization", [options])
 }
 
@@ -67,11 +75,37 @@ var error = function() {
 }
 
 var pluginInfoEvent = function(pluginInfoEvent) {
-    cordova.fireDocumentEvent("isreadytostart", [pluginInfoEvent.isReadyToStart]);
+    cordova.fireDocumentEvent("isreadytostart", {isReadyToStart: pluginInfoEvent.isReadyToStart});
+    cordova.fireDocumentEvent("lastcalibration", prepareLastCalibrationEvent(pluginInfoEvent.debugInfo, pluginInfoEvent.lastCalibrated, pluginInfoEvent.stepLength));
 }
 
 var onDistanceTraveled = function(distanceTraveledEvent) {
     cordova.fireDocumentEvent("distancetraveled", [distanceTraveledEvent]);
+}
+
+function prepareLastCalibrationEvent(debugInfo, lastCalibrated, stepLength) {
+    var lastCalibratedString;
+    if (lastCalibrated === 0) {
+        lastCalibratedString = "--"
+    } else {
+        lastCalibratedString = unixTimestampToDateString(lastCalibrated)
+    }
+
+    var stepLengthString;
+    if (stepLength === 0.0) {
+        stepLengthString = "--"
+    } else {
+        stepLengthString = stepLength.toFixed(2);
+    }
+
+    return {debugInfo: debugInfo,
+        lastCalibrated: lastCalibratedString,
+        stepLength: stepLengthString}
+}
+
+function unixTimestampToDateString(timestamp) {
+    var date = new Date(timestamp*1000);
+    return date.toLocaleString();
 }
 
 var stepdistplugin = new Stepdistplugin();

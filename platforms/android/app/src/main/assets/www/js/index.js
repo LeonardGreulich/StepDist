@@ -35,7 +35,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         var onIsReadyToStart = function(isReadyToStartEvent) {
-            if (isReadyToStartEvent[0]) {
+            if (isReadyToStartEvent["isReadyToStart"]) {
                 document.getElementById("ready-to-start").setAttribute("status", "on");
             } else {
                 document.getElementById("ready-to-start").setAttribute("status", "off");
@@ -44,10 +44,23 @@ var app = {
 
         document.addEventListener("isreadytostart", onIsReadyToStart, false);
 
+        var onLastCalibration = function(lastCalibrationEvent) {
+            if (!lastCalibrationEvent["debugInfo"] == "") {
+                document.getElementById("debug-info").innerHTML = lastCalibrationEvent["debugInfo"]
+            } else {
+                document.getElementById("debug-info").innerHTML = ""
+            }
+            document.getElementById("last-calibrated").innerHTML = "Last calibrated: " + lastCalibrationEvent["lastCalibrated"]
+            document.getElementById("step-length").innerHTML = "Step length: " + lastCalibrationEvent["stepLength"]
+        }
+
+        document.addEventListener("lastcalibration", onLastCalibration, false);
+
         var distanceTraveledListening = false;
 
         var onDistanceTraveled = function(distanceTraveledEvent) {
-            console.log(distanceTraveledEvent);
+            document.getElementById("distance-traveled-paragraph").innerHTML = "Distance: " + distanceTraveledEvent[0]["distanceTraveled"]
+            document.getElementById("steps-taken-paragraph").innerHTML = "Steps: " + distanceTraveledEvent[0]["stepsTaken"]
         }
 
         document.getElementById("toggle-measuring-distance-button").onclick = function() {

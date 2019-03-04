@@ -18,13 +18,18 @@
         android:xlargeScreens="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
 
     <application
         android:debuggable="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
-        android:supportsRtl="true" >
+        android:supportsRtl="true"
+        android:testOnly="true" >
         <activity
             android:name="greulich.leonard.stepdist.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
@@ -38,6 +43,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name="cordova.plugin.stepdist.DistanceService" />
     </application>
 
 </manifest>
