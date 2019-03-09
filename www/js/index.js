@@ -27,18 +27,13 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
-        var parentElement = document.getElementById('deviceready');
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
         var onIsReadyToStart = function(isReadyToStartEvent) {
             if (isReadyToStartEvent["isReadyToStart"]) {
-                document.getElementById("ready-to-start").setAttribute("status", "on");
+                document.getElementById("info-box").setAttribute("status", "on");
+                document.getElementById("ready-to-start").innerHTML = "Ready to start";
             } else {
-                document.getElementById("ready-to-start").setAttribute("status", "off");
+                document.getElementById("info-box").setAttribute("status", "off");
+                document.getElementById("ready-to-start").innerHTML = "Ready to start only when outside";
             }
         }
 
@@ -50,7 +45,7 @@ var app = {
             } else {
                 document.getElementById("debug-info").innerHTML = ""
             }
-            document.getElementById("last-calibrated").innerHTML = "Last calibrated: " + lastCalibrationEvent["lastCalibrated"]
+            document.getElementById("last-calibrated").innerHTML = "Last calibration: " + lastCalibrationEvent["lastCalibrated"]
             document.getElementById("step-length").innerHTML = "Step length: " + lastCalibrationEvent["stepLength"]
         }
 

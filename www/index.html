@@ -36,22 +36,20 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <div class="stats-box">
+            <div class="distance-and-steps">
+                <span style="font-size: 70px;" id="distance-traveled-paragraph">0</span>
+                <span style="font-size: 20px;">meters</span><br>
+                <span style="font-size: 38px;" id="steps-taken-paragraph">0</span>
+                <span style="font-size: 18px;">steps</span>
             </div>
-            <br>
-            <button id="toggle-measuring-distance-button" style="height: 30px; width: 100px">Start</button>
-            <p id="distance-traveled-paragraph"></p>
-            <p id="steps-taken-paragraph"></p>
-            <p id="debug-info"></p>
-            <p id="last-calibrated"></p>
-            <p id="step-length"></p>
         </div>
-        <div>
-            <div class="status-light" id="ready-to-start"></div>
+        <p id="toggle-measuring-distance-button">Start</p>
+        <p id="debug-info"></p>
+        <div id="info-box" status="off">
+            <span id="last-calibrated">Last calibration: --</span><br>
+            <span id="step-length">Step length: --</span><br>
+            <span id="ready-to-start">Ready to start only when outside</span>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
