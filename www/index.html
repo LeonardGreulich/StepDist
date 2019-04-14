@@ -38,12 +38,21 @@
     <body>
         <div class="stats-box">
             <div class="distance-and-steps">
-                <span style="font-size: 66px;" id="distance-traveled-paragraph">0</span>
-                <span style="font-size: 18px;">meters</span><br>
-                <span style="font-size: 42px;" id="steps-taken-paragraph">0</span>
-                <span style="font-size: 16px;">steps</span><div style="margin: 10px"></div>
-                <span style="font-size: 20px;" id="altitude-gain-paragraph">0</span>
-                <span style="font-size: 12px;">meters elevation gain</span>
+                <span class="distance-step-data" style="font-size: 66px;" id="distance-traveled-paragraph">0</span>
+                <span class="distance-step-data" style="font-size: 18px;">meters</span>
+                <br class="distance-step-data">
+                <span class="distance-step-data" style="font-size: 42px;" id="steps-taken-paragraph">0</span>
+                <span class="distance-step-data" style="font-size: 16px;">steps</span><div style="margin: 10px"></div>
+                <span class="distance-step-data" style="font-size: 20px;" id="altitude-gain-paragraph">0</span>
+                <span class="distance-step-data" style="font-size: 12px;">meters elevation gain</span>
+                <input class="optional-settings" type="text" id="body-height-input" value="" placeholder="Body height">
+                <br class="optional-settings">
+                <input class="optional-settings" type="checkbox" id="gps-calibration-checkbox" value="Disable GPS calibration">
+                <span class="optional-settings">Disable GPS calibration</span>
+                <br class="optional-settings"><br class="optional-settings">
+                <button class="optional-settings" id="reset-data-button" type="button">Reset persisted data</button>
+                <br class="optional-settings"><br class="optional-settings">
+                <button class="optional-settings" id="close-settings-button" type="button">Save and close</button>
             </div>
         </div>
         <p id="toggle-measuring-distance-button">Start</p>
@@ -54,6 +63,7 @@
             <span id="body-height">Body height: --</span><br>
             <span id="ready-to-start">Ready to start only when outside</span>
         </div>
+        <p id="settings-button">Settings</p>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>

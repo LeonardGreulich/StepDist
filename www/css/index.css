@@ -33,6 +33,10 @@ body {
     width:100%;
 }
 
+button {
+    height: 25px;
+}
+
 .stats-box {
     position: absolute;       
     width:300px;
@@ -68,6 +72,15 @@ body {
     color: blue;
 }
 
+#settings-button {
+    position: absolute;       
+    bottom: 0px;
+    right: 0%;
+    margin:10px;
+    font-size: 16px;
+    color: blue;
+}
+
 #info-box {
     bottom: 0px;
     border-radius: 50%;
@@ -79,10 +92,6 @@ body {
     margin:5px;
     padding:4px;   
 }
-
-.status-light {
-    
-  }
 
 [status="on"] {
     background-color: green;

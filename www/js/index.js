@@ -37,6 +37,32 @@ var app = {
             }
         }
 
+        var showOptions = function() {
+            var objectsToShow = document.getElementsByClassName("optional-settings");
+            for(var i = 0; i < objectsToShow.length; i++){
+                objectsToShow[i].style.display = "inline";
+            }
+    
+            var objectsToHide = document.getElementsByClassName("distance-step-data");
+            for(var i = 0; i < objectsToHide.length; i++){
+                objectsToHide[i].style.display = "none";
+            }
+        }
+    
+        var hideOptions = function() {
+            var objectsToShow = document.getElementsByClassName("distance-step-data");
+            for(var i = 0; i < objectsToShow.length; i++){
+                objectsToShow[i].style.display = "inline";
+            }
+    
+            var objectsToHide = document.getElementsByClassName("optional-settings");
+            for(var i = 0; i < objectsToHide.length; i++){
+                objectsToHide[i].style.display = "none";
+            }
+        }
+
+        hideOptions();
+
         document.addEventListener("isreadytostart", onIsReadyToStart, false);
 
         var onLastCalibration = function(lastCalibrationEvent) {
@@ -71,7 +97,25 @@ var app = {
                 distanceTraveledListening = false;
             }
         }
-    },
+
+        document.getElementById("settings-button").onclick = function() {
+            showOptions();
+        }
+
+        document.getElementById("close-settings-button").onclick = function() {
+            stepdist.setBodyHeight(Number(document.getElementById("body-height-input").value));
+            if (document.getElementById("gps-calibration-checkbox").checked) {
+                stepdist.disableGPSCalibration();
+            } else {
+                stepdist.disableGPSCalibration(false);
+            }
+            hideOptions();
+        }
+
+        document.getElementById("reset-data-button").onclick = function() {
+            stepdist.resetData();
+        }
+    }
 };
 
 app.initialize();
