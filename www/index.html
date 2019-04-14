@@ -1,33 +1,6 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
@@ -35,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Hello World</title>
     </head>
+
     <body>
         <div class="stats-box">
             <div class="distance-and-steps">
@@ -45,7 +19,7 @@
                 <span class="distance-step-data" style="font-size: 16px;">steps</span><div style="margin: 10px"></div>
                 <span class="distance-step-data" style="font-size: 20px;" id="altitude-gain-paragraph">0</span>
                 <span class="distance-step-data" style="font-size: 12px;">meters elevation gain</span>
-                <input class="optional-settings" type="text" id="body-height-input" value="" placeholder="Body height">
+                <input class="optional-settings" type="text" id="body-height-input" value="" placeholder="Body height (m)">
                 <br class="optional-settings">
                 <input class="optional-settings" type="checkbox" id="gps-calibration-checkbox" value="Disable GPS calibration">
                 <span class="optional-settings">Disable GPS calibration</span>
@@ -55,7 +29,9 @@
                 <button class="optional-settings" id="close-settings-button" type="button">Save and close</button>
             </div>
         </div>
+
         <p id="toggle-measuring-distance-button">Start</p>
+
         <p id="debug-info"></p>
         <div id="info-box" status="off">
             <span id="last-calibrated">Last calibration: --</span><br>
@@ -63,7 +39,9 @@
             <span id="body-height">Body height: --</span><br>
             <span id="ready-to-start">Ready to start only when outside</span>
         </div>
+
         <p id="settings-button">Settings</p>
+        
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>

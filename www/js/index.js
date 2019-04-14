@@ -1,104 +1,83 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 var app = {
-    // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
     onDeviceReady: function() {
-        var onIsReadyToStart = function(isReadyToStartEvent) {
-            if (isReadyToStartEvent["isReadyToStart"]) {
-                document.getElementById("info-box").setAttribute("status", "on");
-                document.getElementById("ready-to-start").innerHTML = "Ready to start";
-            } else {
-                document.getElementById("info-box").setAttribute("status", "off");
-                document.getElementById("ready-to-start").innerHTML = "Ready to start only when outside";
-            }
-        }
-
         var showOptions = function() {
             var objectsToShow = document.getElementsByClassName("optional-settings");
-            for(var i = 0; i < objectsToShow.length; i++){
+            for (var i = 0; i < objectsToShow.length; i++) {
                 objectsToShow[i].style.display = "inline";
             }
     
             var objectsToHide = document.getElementsByClassName("distance-step-data");
-            for(var i = 0; i < objectsToHide.length; i++){
+            for (var i = 0; i < objectsToHide.length; i++) {
                 objectsToHide[i].style.display = "none";
             }
         }
     
         var hideOptions = function() {
             var objectsToShow = document.getElementsByClassName("distance-step-data");
-            for(var i = 0; i < objectsToShow.length; i++){
+            for (var i = 0; i < objectsToShow.length; i++) {
                 objectsToShow[i].style.display = "inline";
             }
     
             var objectsToHide = document.getElementsByClassName("optional-settings");
-            for(var i = 0; i < objectsToHide.length; i++){
+            for (var i = 0; i < objectsToHide.length; i++) {
                 objectsToHide[i].style.display = "none";
             }
         }
 
         hideOptions();
 
-        document.addEventListener("isreadytostart", onIsReadyToStart, false);
-
-        var onLastCalibration = function(lastCalibrationEvent) {
-            if (!lastCalibrationEvent["debugInfo"] == "") {
-                document.getElementById("debug-info").innerHTML = lastCalibrationEvent["debugInfo"]
+        var onStepDistStatusEvent = function(stepDistStatusEvent) {
+            if (stepDistStatusEvent.isReadyToStart) {
+                document.getElementById("info-box").setAttribute("status", "on");
+                document.getElementById("ready-to-start").innerHTML = "Ready to start";
             } else {
-                document.getElementById("debug-info").innerHTML = ""
+                document.getElementById("info-box").setAttribute("status", "off");
+                document.getElementById("ready-to-start").innerHTML = "Ready to start only when outside";
             }
-            document.getElementById("last-calibrated").innerHTML = "Last calibration: " + lastCalibrationEvent["lastCalibrated"]
-            document.getElementById("step-length").innerHTML = "Step length: " + lastCalibrationEvent["stepLength"]
-            document.getElementById("body-height").innerHTML = "Body height: " + lastCalibrationEvent.bodyHeight
+
+            if (!stepDistStatusEvent.debugInfo == "") {
+                document.getElementById("debug-info").innerHTML = lastCalibrationEvent["debugInfo"];
+            } else {
+                document.getElementById("debug-info").innerHTML = "";
+            }
+
+            document.getElementById("last-calibrated").innerHTML = "Last calibration: "
+                + ((stepDistStatusEvent.lastCalibrated != null) ? stepDistStatusEvent.lastCalibrated : "--");
+            document.getElementById("step-length").innerHTML = "Step length: "
+                + ((stepDistStatusEvent.stepLength != null) ? stepDistStatusEvent.stepLength : "--");
+            document.getElementById("body-height").innerHTML = "Body height: "
+                + ((stepDistStatusEvent.bodyHeight != null) ? stepDistStatusEvent.bodyHeight : "--");
+            document.getElementById("body-height-input").value = stepDistStatusEvent.bodyHeight;
         }
 
-        document.addEventListener("lastcalibration", onLastCalibration, false);
+        document.addEventListener("stepdiststatus", onStepDistStatusEvent, false);
 
-        var distanceTraveledListening = false;
+        var walkingDistanceListening = false;
 
-        var onDistanceTraveled = function(distanceTraveledEvent) {
-            document.getElementById("distance-traveled-paragraph").innerHTML = distanceTraveledEvent[0]["distanceTraveled"]
-            document.getElementById("steps-taken-paragraph").innerHTML = distanceTraveledEvent[0]["stepsTaken"]
-            document.getElementById("altitude-gain-paragraph").innerHTML = distanceTraveledEvent[0]["relativeAltitudeGain"]
+        var onWalkingDistanceEvent = function(walkingDistanceEvent) {
+            document.getElementById("distance-traveled-paragraph").innerHTML = walkingDistanceEvent.distance;
+            document.getElementById("steps-taken-paragraph").innerHTML = walkingDistanceEvent.steps;
+            document.getElementById("altitude-gain-paragraph").innerHTML = walkingDistanceEvent.elevation;
         }
 
         document.getElementById("toggle-measuring-distance-button").onclick = function() {
-            if (!distanceTraveledListening) {
-                document.addEventListener("distancetraveled", onDistanceTraveled, false);
-                document.getElementById("toggle-measuring-distance-button").innerHTML = "Stop"
-                distanceTraveledListening = true;
+            if (!walkingDistanceListening) {
+                document.addEventListener("walkingdistance", onWalkingDistanceEvent, false);
+                document.getElementById("toggle-measuring-distance-button").innerHTML = "Stop";
+                walkingDistanceListening = true;
             } else {
-                document.removeEventListener("distancetraveled", onDistanceTraveled, false);
-                document.getElementById("toggle-measuring-distance-button").innerHTML = "Start"
-                distanceTraveledListening = false;
+                document.removeEventListener("walkingdistance", onWalkingDistanceEvent, false);
+                document.getElementById("toggle-measuring-distance-button").innerHTML = "Start";
+                walkingDistanceListening = false;
             }
         }
 
         document.getElementById("settings-button").onclick = function() {
+            document.getElementById("toggle-measuring-distance-button").style.display = "none";
             showOptions();
         }
 
@@ -110,10 +89,12 @@ var app = {
                 stepdist.disableGPSCalibration(false);
             }
             hideOptions();
+            document.getElementById("toggle-measuring-distance-button").style.display = "inline";
         }
 
         document.getElementById("reset-data-button").onclick = function() {
             stepdist.resetData();
+            document.getElementById("body-height-input").value = "";
         }
     }
 };
