@@ -47,6 +47,7 @@ var app = {
             }
             document.getElementById("last-calibrated").innerHTML = "Last calibration: " + lastCalibrationEvent["lastCalibrated"]
             document.getElementById("step-length").innerHTML = "Step length: " + lastCalibrationEvent["stepLength"]
+            document.getElementById("body-height").innerHTML = "Body height: " + lastCalibrationEvent.bodyHeight
         }
 
         document.addEventListener("lastcalibration", onLastCalibration, false);
@@ -56,6 +57,7 @@ var app = {
         var onDistanceTraveled = function(distanceTraveledEvent) {
             document.getElementById("distance-traveled-paragraph").innerHTML = distanceTraveledEvent[0]["distanceTraveled"]
             document.getElementById("steps-taken-paragraph").innerHTML = distanceTraveledEvent[0]["stepsTaken"]
+            document.getElementById("altitude-gain-paragraph").innerHTML = distanceTraveledEvent[0]["relativeAltitudeGain"]
         }
 
         document.getElementById("toggle-measuring-distance-button").onclick = function() {
