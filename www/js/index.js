@@ -4,6 +4,9 @@ var app = {
     },
 
     onDeviceReady: function() {
+        var walkingDistanceListening = false;
+        var bodyHeight = null;
+
         var showOptions = function() {
             var objectsToShow = document.getElementsByClassName("optional-settings");
             for (var i = 0; i < objectsToShow.length; i++) {
@@ -40,7 +43,7 @@ var app = {
             }
 
             if (!stepDistStatusEvent.debugInfo == "") {
-                document.getElementById("debug-info").innerHTML = lastCalibrationEvent["debugInfo"];
+                document.getElementById("debug-info").innerHTML = stepDistStatusEvent["debugInfo"];
             } else {
                 document.getElementById("debug-info").innerHTML = "";
             }
@@ -51,12 +54,10 @@ var app = {
                 + ((stepDistStatusEvent.stepLength != null) ? stepDistStatusEvent.stepLength : "--");
             document.getElementById("body-height").innerHTML = "Body height: "
                 + ((stepDistStatusEvent.bodyHeight != null) ? stepDistStatusEvent.bodyHeight : "--");
-            document.getElementById("body-height-input").value = stepDistStatusEvent.bodyHeight;
+            bodyHeight = stepDistStatusEvent.bodyHeight;
         }
 
         document.addEventListener("stepdiststatus", onStepDistStatusEvent, false);
-
-        var walkingDistanceListening = false;
 
         var onWalkingDistanceEvent = function(walkingDistanceEvent) {
             document.getElementById("distance-traveled-paragraph").innerHTML = walkingDistanceEvent.distance;
@@ -78,6 +79,7 @@ var app = {
 
         document.getElementById("settings-button").onclick = function() {
             document.getElementById("toggle-measuring-distance-button").style.display = "none";
+            document.getElementById("body-height-input").value = bodyHeight;
             showOptions();
         }
 
