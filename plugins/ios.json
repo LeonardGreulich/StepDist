@@ -9,9 +9,6 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "greulich.leonard.stepdist"
-    },
-    "cordova-plugin-stepdist": {
-      "PACKAGE_NAME": "greulich.leonard.stepdist"
     }
   },
   "dependent_plugins": {}

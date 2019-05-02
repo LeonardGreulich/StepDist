@@ -6,13 +6,5 @@
     },
     "is_top_level": true,
     "variables": {}
-  },
-  "cordova-plugin-stepdist": {
-    "source": {
-      "type": "local",
-      "path": "/Users/leo/Documents/CordovaProjects/stepdist/node_modules/cordova-plugin-stepdist"
-    },
-    "is_top_level": true,
-    "variables": {}
   }
 }

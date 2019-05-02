@@ -1,13 +1,24 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
+ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/6718dc88c68803e99b316d7dee967357/AndroidManifest.xml:17:1-22:12
 MERGED from [:CordovaLib] /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:1-27:12
-INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
-INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-18:12
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/d919848e4102c5dac0b94f5b1d2e279e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/5d5af73f805be7ee6782a53d61cca706/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/1d402bd57521c9245f1ab7064ad51fef/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/ba09734ce31d9d6f730223549457b916/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/516446b87198a18d380e6c1a28a083ce/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/3f2e6173bf054d8f47eb98a662f7c163/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/308f40a6f99a067d070681bf2f767b14/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/5209e18db60c33e6157bfba13549c050/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/8a7cc63e03e6f30e6e5545741b37dce4/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d3fa12b2c861ed326c5fd1bf0022760c/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
 	package
 		ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:2:102-137
 		INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml
@@ -85,8 +96,30 @@ ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/s
 uses-sdk
 ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:14:5-74
 INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:14:5-74
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/6718dc88c68803e99b316d7dee967357/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/6718dc88c68803e99b316d7dee967357/AndroidManifest.xml:20:5-44
 MERGED from [:CordovaLib] /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
 MERGED from [:CordovaLib] /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/d919848e4102c5dac0b94f5b1d2e279e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/d919848e4102c5dac0b94f5b1d2e279e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/5d5af73f805be7ee6782a53d61cca706/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/5d5af73f805be7ee6782a53d61cca706/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/1d402bd57521c9245f1ab7064ad51fef/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/1d402bd57521c9245f1ab7064ad51fef/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/ba09734ce31d9d6f730223549457b916/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/ba09734ce31d9d6f730223549457b916/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/516446b87198a18d380e6c1a28a083ce/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/516446b87198a18d380e6c1a28a083ce/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/3f2e6173bf054d8f47eb98a662f7c163/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/leo/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/3f2e6173bf054d8f47eb98a662f7c163/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/308f40a6f99a067d070681bf2f767b14/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/308f40a6f99a067d070681bf2f767b14/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/5209e18db60c33e6157bfba13549c050/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/5209e18db60c33e6157bfba13549c050/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/8a7cc63e03e6f30e6e5545741b37dce4/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/8a7cc63e03e6f30e6e5545741b37dce4/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d3fa12b2c861ed326c5fd1bf0022760c/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/leo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d3fa12b2c861ed326c5fd1bf0022760c/AndroidManifest.xml:20:5-44
 INJECTED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:14:5-74
 	android:targetSdkVersion
 		ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:14:42-71
@@ -102,7 +135,11 @@ uses-permission#android.permission.FOREGROUND_SERVICE
 ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:16:5-77
 	android:name
 		ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:16:22-74
-uses-feature#android.hardware.location.gps
-ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:17:5-66
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:17:5-68
 	android:name
-		ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:17:19-63
+		ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:17:22-65
+uses-feature#android.hardware.location.gps
+ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:18:5-66
+	android:name
+		ADDED from /Users/leo/Documents/CordovaProjects/stepdist/platforms/android/app/src/main/AndroidManifest.xml:18:19-63
