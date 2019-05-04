@@ -86,9 +86,9 @@ var app = {
         document.getElementById("close-settings-button").onclick = function() {
             stepdist.setBodyHeight(Number(document.getElementById("body-height-input").value));
             if (document.getElementById("gps-calibration-checkbox").checked) {
-                stepdist.disableGPSCalibration();
+                stepdist.disableGNSSCalibration();
             } else {
-                stepdist.disableGPSCalibration(false);
+                stepdist.disableGNSSCalibration(false);
             }
             hideOptions();
             document.getElementById("toggle-measuring-distance-button").style.display = "inline";
